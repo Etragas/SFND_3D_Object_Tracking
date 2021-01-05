@@ -357,7 +357,7 @@ int main(int argc, const char *argv[])
             }
             catch (exception &e)
             {
-                cout << "Detector: " << detectorType << " Descriptor: " << descriptorType << " Failed " << endl; //e.what() << endl;
+                cout << "Detector: " << detectorType << " Descriptor: " << descriptorType << " Failed " << e.what() << endl; //e.what() << endl;
             }
         }
     }
