@@ -158,8 +158,8 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
         extractor = cv::AKAZE::create();
         break;
     case str2int("SIFT"):
-        // extractor = cv::xfeatures2d::SIFT::create();
-        extractor = cv::SIFT::create();
+        extractor = cv::xfeatures2d::SIFT::create();
+        // extractor = cv::SIFT::create();
         break;
     default:
         break;
@@ -236,8 +236,8 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, cons
         break;
     case str2int("SIFT"):
         /* code */
-        // detector = cv::xfeatures2d::SIFT::create();
-        detector = cv::SIFT::create();
+        detector = cv::xfeatures2d::SIFT::create();
+        // detector = cv::SIFT::create();
         break;
     default:
         break;
