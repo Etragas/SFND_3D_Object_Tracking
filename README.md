@@ -39,7 +39,7 @@ https://docs.google.com/spreadsheets/d/1UjGdDDPwwlU-jJFoK2x6S4atTt9iF40zgKUWre7t
 I then cleaned up the data to remove some outlier predictions, and graphed the best performers:
 https://docs.google.com/spreadsheets/d/1UjGdDDPwwlU-jJFoK2x6S4atTt9iF40zgKUWre7tebg/edit#gid=30454966
 
-<iframe width="1316" height="813" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTb-sW4quK13SZPhAsvSZPGDzAQ8-CLDRsMojmsSMTpxKUk05-IVCPB2aKlu5fRDVG7Le8iyJE9MxPQ/pubchart?oid=951373265&amp;format=interactive"></iframe>
+<img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTb-sW4quK13SZPhAsvSZPGDzAQ8-CLDRsMojmsSMTpxKUk05-IVCPB2aKlu5fRDVG7Le8iyJE9MxPQ/pubchart?oid=951373265&format=image" />
 
 We can see that FAST+SIFT performed well when compared to LIDAR. This is aligned with out results from Project 2, where Fast + Sift was our #1 pick.
 
