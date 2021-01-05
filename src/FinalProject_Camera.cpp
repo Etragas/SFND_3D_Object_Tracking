@@ -114,8 +114,8 @@ int main(int argc, const char *argv[])
     /* MAIN LOOP OVER ALL IMAGES */
     vector<string> detectors = {"FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
     vector<string> descriptors = {"BRIEF", "ORB", "FREAK", "AKAZE", "SIFT"};
-    ofstream myfile;
-    myfile.open ("results.txt");
+    // ofstream myfile;
+    // myfile.open ("results.txt");
 
     for (auto detectorType : detectors)
     {
@@ -342,27 +342,27 @@ int main(int argc, const char *argv[])
 
                 t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
                 double t_ms = 1000 * t / 1.0;
-                myfile << "------------------------------------------------------------------------------------------------------------------------------------------------";
-                myfile << "Detector: " << detectorType << " Descriptor: " << descriptorType <<  endl;
-                myfile << " KP Size mean: " << mean << " KP Size stddev: " << stddev << " Time: " << t_ms << endl;
-                myfile << " Lidar Preds " << "\n";
-                for (auto pred: ttc_lidar_accumul) {
-                    myfile << to_string(pred) << "\n";
-                }
-                myfile << " Cam Preds " << "\n";
-                for (auto pred: ttc_cam_accumul) {
-                    myfile << to_string(pred) << "\n";
-                }
-                myfile << "------------------------------------------------------------------------------------------------------------------------------------------------";
+                // myfile << "------------------------------------------------------------------------------------------------------------------------------------------------";
+                // myfile << "Detector: " << detectorType << " Descriptor: " << descriptorType <<  endl;
+                // myfile << " KP Size mean: " << mean << " KP Size stddev: " << stddev << " Time: " << t_ms << endl;
+                // myfile << " Lidar Preds " << "\n";
+                // for (auto pred: ttc_lidar_accumul) {
+                //     myfile << to_string(pred) << "\n";
+                // }
+                // myfile << " Cam Preds " << "\n";
+                // for (auto pred: ttc_cam_accumul) {
+                //     myfile << to_string(pred) << "\n";
+                // }
+                // myfile << "------------------------------------------------------------------------------------------------------------------------------------------------";
             }
             catch (exception &e)
             {
-                myfile << "Detector: " << detectorType << " Descriptor: " << descriptorType << " Failed " << endl; //e.what() << endl;
+                cout << "Detector: " << detectorType << " Descriptor: " << descriptorType << " Failed " << endl; //e.what() << endl;
             }
         }
     }
-    myfile.close();
-    return 0;
+    // myfile.close();
+    // return 0;
 
     return 0;
 }
