@@ -1,15 +1,49 @@
 # SFND 3D Object Tracking
 
-Welcome to the final project of the camera course. By completing all the lessons, you now have a solid understanding of keypoint detectors, descriptors, and methods to match them between successive images. Also, you know how to detect objects in an image using the YOLO deep-learning framework. And finally, you know how to associate regions in a camera image with Lidar points in 3D space. Let's take a look at our program schematic to see what we already have accomplished and what's still missing.
+# Student Results
 
-<img src="images/course_code_structure.png" width="779" height="414" />
+## FP1 Match 3D objects
+Done, returns the box id of the best match for each box in prevFrame. This code could be improved to support new objects that don't have a box in prevFrame,
 
-In this final project, you will implement the missing parts in the schematic. To do this, you will complete four major tasks: 
-1. First, you will develop a way to match 3D objects over time by using keypoint correspondences. 
-2. Second, you will compute the TTC based on Lidar measurements. 
-3. You will then proceed to do the same using the camera, which requires to first associate keypoint matches to regions of interest and then to compute the TTC based on those matches. 
-4. And lastly, you will conduct various tests with the framework. Your goal is to identify the most suitable detector/descriptor combination for TTC estimation and also to search for problems that can lead to faulty measurements by the camera or Lidar sensor. In the last course of this Nanodegree, you will learn about the Kalman filter, which is a great way to combine the two independent TTC measurements into an improved version which is much more reliable than a single sensor alone can be. But before we think about such things, let us focus on your final project in the camera course. 
+## FP2 Compute Lidar-based TTC
+Done, I compute the mean x coordinate of prev lidar points and curr lidar points, and then return the x_diff / v0.
 
+## FP3 Associate Keypoint Correspondences with Bounding Boxes
+Done using Rect.contains + filtering all points with average pairwise distance > 300
+
+## FP4 Camera based TTC
+Done using the code provided in a previous lesson.
+
+## FP5 Perf 1 Cases Where Lidar is off
+### Outlier points throw off estimates
+Lidar seems to consistently see *through* the car's bumper. If in a subsequent frame the scanner doesn't detect these through points, our TTC estimates increase due to our constant velocity estimate. 
+This is very visible in the frame(18, 19) pair. Where an outlier point causes our TTC to jump from 11.8s -> 8.5s. 
+The outlier point is in the top right: 
+
+<img src="https://i.ibb.co/yYkhwSj/image.png"/>
+
+this point then disappears in frame 19 
+
+
+<img src="https://i.ibb.co/gmKyk20/image.png"/>
+
+### Curvature drops increase perceived velocity
+This drop in curvature causes a lorge drop in TTC, from 12s to 9.8s
+
+<img src="https://i.ibb.co/t3b3fth/image.png" width="1440" height="720" />
+
+## FP6 Perf 2
+## MP7 Performance Evaluation 1
+This sheet records the prediction of each combo at each frame. The best runs are highlighted. 
+https://docs.google.com/spreadsheets/d/1UjGdDDPwwlU-jJFoK2x6S4atTt9iF40zgKUWre7tebg/edit?usp=sharing
+I then cleaned up the data to remove some outlier predictions, and graphed the best performers:
+https://docs.google.com/spreadsheets/d/1UjGdDDPwwlU-jJFoK2x6S4atTt9iF40zgKUWre7tebg/edit#gid=30454966
+
+<iframe width="1316" height="813" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTb-sW4quK13SZPhAsvSZPGDzAQ8-CLDRsMojmsSMTpxKUk05-IVCPB2aKlu5fRDVG7Le8iyJE9MxPQ/pubchart?oid=951373265&amp;format=interactive"></iframe>
+
+We can see that FAST+SIFT performed well when compared to LIDAR. This is aligned with out results from Project 2, where Fast + Sift was our #1 pick.
+
+# End of Student Results
 ## Dependencies for Running Locally
 * cmake >= 2.8
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
